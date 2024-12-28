@@ -1,117 +1,252 @@
 <!DOCTYPE html>
 <html lang="tr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Musa Demir - Kişisel Sayfa</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.1.0/github-markdown.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+      body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f9;
+        color: #333;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+      .container {
+        width: 80%;
+        max-width: 1200px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 30px;
+      }
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+      .header img {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        border: 3px solid #0073b1;
+      }
+      .header h1 {
+        margin: 15px 0 5px;
+        font-size: 28px;
+        color: #0073b1;
+      }
+      .header p {
+        font-size: 18px;
+        color: #555;
+      }
+      .markdown-body {
+        text-align: left;
+        line-height: 1.6;
+      }
+      .links {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      .links a {
+        text-decoration: none;
+        margin: 0 10px;
+        padding: 12px 20px;
+        background-color: #0073b1;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+      .links a:hover {
+        background-color: #005582;
+      }
+      .footer {
+        text-align: center;
+        margin-top: 40px;
+        font-size: 14px;
+        color: #777;
+      }
+      .loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: #f9f9f9;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+      }
+      .loading .pc-screen {
+        width: 340px;
+        height: 200px;
+        background-color: #444;
+        border: 8px solid #222;
+        border-radius: 15px;
+        position: relative;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 10px;
+        overflow: hidden;
+      }
+      .loading .typewriter {
+        width: 100%;
+        color: #4caf50;
+        font-family: monospace;
+        font-size: 12px;
+        white-space: pre-wrap;
+      }
+      @keyframes blink {
+        from {
+          border-color: transparent;
         }
-        .container {
-            width: 80%;
-            max-width: 1200px;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin:30px;
+        to {
+          border-color: rgba(255, 255, 255, 0.75);
         }
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
+      }
+      .fade-out {
+        animation: fadeOut 2s forwards;
+      }
+      @keyframes fadeOut {
+        from {
+          opacity: 1;
         }
-        .header img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            border: 3px solid #0073b1;
+        to {
+          opacity: 0;
+          visibility: hidden;
         }
-        .header h1 {
-            margin: 15px 0 5px;
-            font-size: 28px;
-            color: #0073b1;
-        }
-        .header p {
-            font-size: 18px;
-            color: #555;
-        }
-        .markdown-body {
-            text-align: left;
-            line-height: 1.6;
-        }
-        .links {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-        .links a {
-            text-decoration: none;
-            margin: 0 10px;
-            padding: 12px 20px;
-            background-color: #0073b1;
-            color: #fff;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-        .links a:hover {
-            background-color: #005582;
-        }
-        .footer {
-            text-align: center;
-            margin-top: 40px;
-            font-size: 14px;
-            color: #777;
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <div class="loading" id="loading">
+      <div class="pc-screen">
+        <div class="typewriter" id="typewriter"></div>
+      </div>
+    </div>
     <div class="container">
-        <div class="header">
-            <img src="https://avatars.githubusercontent.com/u/48536631?v=4" alt="Musa Demir">
-            <h1>Musa Demir</h1>
-            <p>C# | .Net | Angular | Javascript | Unity | Senior Full-Stack Developer</p>
-        </div>
-        <div id="markdown-content" class="markdown-body">
-            <!-- Markdown içeriği buraya yüklenecek -->
-        </div>
-        <div class="links">
-            <a href="https://github.com/demirmusa" target="_blank" title="GitHub">
-                <i class="fab fa-github"></i>
-            </a>
-            <a href="https://www.linkedin.com/in/musa-demir/" target="_blank" title="LinkedIn">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="mailto:demirmusa96@gmail.com" target="_blank" title="E-posta">
-                <i class="fas fa-envelope"></i>
-            </a>
-        </div>
-        <div class="footer">
-            <p>&copy; 2024 Musa Demir. All Rights Reserved.</p>
-        </div>
+      <div class="header">
+        <img
+          src="https://avatars.githubusercontent.com/u/48536631?v=4"
+          alt="Musa Demir"
+        />
+        <h1>Musa Demir</h1>
+        <p>
+          C# | .Net | Angular | Javascript | Unity | Senior Full-Stack Developer
+        </p>
+      </div>
+      <div id="markdown-content" class="markdown-body">
+        <!-- Markdown içeriği buraya yüklenecek -->
+      </div>
+      <div class="links">
+        <a href="https://github.com/demirmusa" target="_blank" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a
+          href="https://www.linkedin.com/in/musa-demir/"
+          target="_blank"
+          title="LinkedIn"
+        >
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="mailto:demirmusa96@gmail.com" target="_blank" title="E-posta">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </div>
+      <div class="footer">
+        <p>&copy; 2024 Musa Demir. All Rights Reserved.</p>
+      </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/showdown@2.1.0/dist/showdown.min.js"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            fetch('https://raw.githubusercontent.com/demirmusa/demirmusa/master/README.md')
-                .then(response => response.text())
-                .then(markdown => {
-                    var converter = new showdown.Converter();
-                    var html = converter.makeHtml(markdown);
-                    document.getElementById('markdown-content').innerHTML = html;
-                })
-                .catch(error => console.error('Markdown yüklenirken hata oluştu:', error));
-        });
+      document.addEventListener("DOMContentLoaded", function () {
+        const loadingElement = document.getElementById("loading");
+        const typewriterElement = document.getElementById("typewriter");
+
+        const messagesStr = `fetch("https://raw.githubusercontent.com/demirmusa/demirmusa/master/README.md")
+  .then((response) => response.text())
+  .then((markdown) => {
+    const converter = new showdown.Converter();
+    const html = converter.makeHtml(markdown);
+    document.getElementById("markdown-content").innerHTML = html;
+    hideLoader();
+  })
+  .catch((error) => {
+    console.error("Error while loading markdown:", error);
+    hideLoader();
+  });`;
+
+        const messages = messagesStr.split("\n");
+
+        let currentMessage = 0;
+        let currentChar = 0;
+        let isLoaderMinTimePassedOrFinished = false;
+
+        function typeNextChar() {
+          if (currentChar < messages[currentMessage].length) {
+            typewriterElement.textContent +=
+              messages[currentMessage][currentChar];
+            currentChar++;
+            setTimeout(typeNextChar, 4);
+          } else {
+            currentChar = 0;
+            currentMessage++;
+            if (currentMessage < messages.length) {
+              typewriterElement.textContent += "\n"; // Satır atla
+              setTimeout(typeNextChar, 7);
+            } else {
+              isLoaderMinTimePassedOrFinished = true;
+            }
+          }
+        }
+
+        function fetchReadme() {
+          fetch(
+            "https://raw.githubusercontent.com/demirmusa/demirmusa/master/README.md"
+          )
+            .then((response) => response.text())
+            .then((markdown) => {
+              const converter = new showdown.Converter();
+              const html = converter.makeHtml(markdown);
+              document.getElementById("markdown-content").innerHTML = html;
+              hideLoader();
+            })
+            .catch((error) => {
+              console.error("Error while loading markdown:", error);
+              hideLoader();
+            });
+        }
+
+        function hideLoader() {
+          if (!isLoaderMinTimePassedOrFinished) {
+            setTimeout(hideLoader, 50);
+            return;
+          }
+          loadingElement.classList.add("fade-out");
+          setTimeout(() => (loadingElement.style.display = "none"), 1000);
+        }
+
+        typeNextChar();
+        fetchReadme();
+        setTimeout(() => (isLoaderMinTimePassedOrFinished = true), 2000);
+      });
     </script>
-</body>
+  </body>
 </html>
